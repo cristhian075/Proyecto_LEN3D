@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Express</title>
+        {{!-- fuentes --}}
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    {{!-- bootstrap --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d5c2ce6130.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">FET</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/usuarios/consultar">usuarios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/ciudades/consultar">Ciudades</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/barrios/consultar">Barrios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/roles/consultar">Roles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/marcas/consultar">Marcas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/servicios/consultar">Servicios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/categorias/consultar">Categorias</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    {{> navigation}}
+    {{{body}}}
+</body>
+</html>
