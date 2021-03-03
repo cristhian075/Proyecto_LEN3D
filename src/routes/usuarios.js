@@ -10,15 +10,17 @@ router.get('/delete/:id_usuario', async(req,res)=>{
 }); 
 
 
-router.get('/agregar', async(req,res)=>{
-    res.render('usuarios/agregar');
-}); 
 router.post('/agregar', async(req,res)=>{
-            const { nombre,edad,correo} = req.body;
+            const { nombres,apellidos,n_telefono,correo,direccion,id_ciudad,id_barrio,roles_id_rol} = req.body;
             const newUsuario = {
-            nombre,
-            edad,
-            correo}
+                nombres,
+                apellidos,
+                n_telefono,
+                correo,
+                direccion,
+                id_ciudad,
+                id_barrio,
+                roles_id_rol}
             
             await pool.query('insert into usuarios set ?',[newUsuario]);
                 res.redirect('/usuarios/consultar');
@@ -29,6 +31,15 @@ router.get('/consultar', async(req,res)=>{
          res.render('usuarios/consultar',{usuarios});
 });    
 
+router.get('/agregar', async(req, res) => {
+
+    const ciudades = await pool.query('select * from ciudades');
+    const barrios = await pool.query('select * from barrios');
+    const roles = await pool.query('select * from roles');
+
+    res.render('usuarios/agregar', { ciudades, barrios, roles });
+
+});  
 
 router.get('/editar/:id_usuario',async(req,res)=>{
     const {  id_usuario } = req.params;
@@ -39,14 +50,13 @@ router.get('/editar/:id_usuario',async(req,res)=>{
 
 router.post('/editar/:id_usuario',async(req,res)=>{
     const {id_usuario} = req.params;
-    const {nombre,edad,correo} = req.body;
-    const updateUsuario ={nombre,edad,correo};
+    const {nombres,apellidos,n_telefono,correo,direccion,id_ciudad,id_barrio,roles_id_rol} = req.body;
+    const updateUsuario ={nombres,apellidos,n_telefono,correo,direccion,id_ciudad,id_barrio,roles_id_rol};
     await pool.query('update usuarios set ? where id_usuario= ?',[  updateUsuario ,id_usuario]);
     res.redirect('/usuarios/consultar');
 
 
 });
-
 
 
 module.exports = router;

@@ -1,0 +1,37 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="card">
+                <div class="card-body">
+                     <form action="/pedidos/agregar" method="POST">
+                        <div class="form-group">
+                            <label for=""></label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="cantidad" id="" placeholder="digite la cantidad de la compra">
+                        </div>
+                        <h5>Usuarios</h5>
+                        <select name="id_usuario">
+                              {{#each usuarios}}
+                              <option value="{{id_usuario}}">{{nombres}}</option>
+                              {{/each}}
+                        </select><br>
+                        <br>
+                        <h5>Productos</h5>
+                        <select name="id_produvto">
+                              {{#each productos}}
+                              <option value="{{id_produvto}}">{{nombre}}</option>
+                              {{/each}}
+                        </select><br>
+                        <br>
+                        <h5>Servicios</h5>
+                        <select name="id_servicio">
+                              {{#each servicios}}
+                              <option value="{{id_servicio}}">{{servicio}}</option>
+                              {{/each}}
+                        </select><br>
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"> Agregar</i> </button>
+                        </div>
+                    </form>

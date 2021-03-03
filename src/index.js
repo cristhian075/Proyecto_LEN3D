@@ -45,6 +45,8 @@ app.use('/roles',require('./routes/roles'));
 app.use('/marcas',require('./routes/marcas'));
 app.use('/servicios',require('./routes/servicios'));
 app.use('/categorias',require('./routes/categorias'));
+app.use('/productos',require('./routes/productos'));
+app.use('/pedidos',require('./routes/pedidos'));
 
 // public - navegador puede acceder
 app.use(express.static(path.join(__dirname,'public')));

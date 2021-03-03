@@ -3,23 +3,46 @@
         <div class="col-md-6 ">
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="POST">
+                     <form action="/usuarios/agregar" method="POST">
                         <div class="form-group">
                             <label for=""></label>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="nombre" id="" placeholder="digite el nombre">
+                            <input class="form-control" type="text" name="nombres" id="" placeholder="digite el nombre completo">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="edad" id="" placeholder="digite la edad">
+                            <input class="form-control" type="text" name="apellidos" id="" placeholder="digite los apellidos">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="n_telefono" id="" placeholder="digite el numero de telefono">
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="text" name="correo" id="" placeholder="digite el correo">
                         </div>
                         <div class="form-group">
+                            <input class="form-control" type="text" name="direccion" id="" placeholder="digite la direccion">
+                        </div>
+                        <h5>Ciudad-Corregimientos</h5>
+                        <select name="id_ciudad">
+                              {{#each ciudades}}
+                              <option value="{{id_ciudad}}">{{ciudad}}</option>
+                              {{/each}}
+                        </select><br>
+                        <br>
+                        <h5>Barrios</h5>
+                        <select name="id_barrio">
+                              {{#each barrios}}
+                              <option value="{{id_barrio}}">{{barrio}}</option>
+                              {{/each}}
+                        </select><br>
+                        <br>
+                        <h5>Roles</h5>
+                        <select name="id_rol">
+                              {{#each roles}}
+                              <option value="{{roles_id_rol}}">{{rol}}</option>
+                              {{/each}}
+                        </select><br>
+                        <div class="form-group">
                             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"> Agregar</i> </button>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>

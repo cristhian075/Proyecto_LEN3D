@@ -1,0 +1,42 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="card">
+                <div class="card-body">
+                     <form action="/productos/agregar" method="POST">
+                        <div class="form-group">
+                            <label for=""></label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="nombre" id="" placeholder="digite el nombre del producto">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="stock" id="" placeholder="digite la cantidad de productos disponibles">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="precio" id="" placeholder="digite el precio">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="codigo" id="" placeholder="digite el codigo">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="imagen" id="" placeholder="digite la url de la imagen del producto">
+                        </div>
+                        <h5>Marcas</h5>
+                        <select name="id_marca">
+                              {{#each marcas}}
+                              <option value="{{id_marca}}">{{marca}}</option>
+                              {{/each}}
+                        </select><br>
+                        <br>
+                        <h5>Categorias</h5>
+                        <select name="id_categoria">
+                              {{#each categorias}}
+                              <option value="{{id_categoria}}">{{nombre_categoria}}</option>
+                              {{/each}}
+                        </select><br>
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"> Agregar</i> </button>
+                        </div>
+                    </form>

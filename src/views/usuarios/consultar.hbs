@@ -16,22 +16,34 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Edad</th>
+      <th scope="col">Nombres</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">N_telefono</th>
       <th scope="col">Correo</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Ciudad</th>
+      <th scope="col">Barrio</th>
+      <th scope="col">Rol</th>
       <th scope="col">Acciones</th>
       <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#agregar">
         agregar
       </button>
+      <a class="btn btn-primary" href="/usuarios/agregar" role="button">Agregar en otra vista</a>
+
     </tr>
   </thead>
   <tbody>
       {{#each usuarios}}
     <tr>
       <th scope="row">{{id_usuario}}</th>
-      <td>{{nombre}}</td>
-      <td>{{edad}}</td>
+      <td>{{nombres}}</td>
+      <td>{{apellidos}}</td>
+      <td>{{n_telefono}}</td>
       <td>{{correo}}</td>
+      <td>{{direccion}}</td>
+      <td>{{id_ciudad}}</td>
+      <td>{{id_barrio}}</td>
+      <td>{{roles_id_rol}}</td>
       <td>
         <!-- Button eliminar -->
         <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#eliminar{{id_usuario}}">
@@ -47,7 +59,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro de eliminar a {{nombre}}? </h5>
+        <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro de eliminar a {{nombres}} {{apellidos}}? </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -62,43 +74,7 @@
   </div>
 </div>        
 
-<!-- Modal modificar-->
-        <div class="modal fade" id="modificar{{id_usuario}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modificar usuario: {{nombre}}</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-         <div class="modal-body">
-          <form action="/usuarios/editar/{{id_usuario}}" method="POST">
-                        <div class="form-group">
-                            <label for=""></label>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="nombre" value="{{nombre}}" placeholder="digite el nombre del docente">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="edad" value="{{edad}}" placeholder="digite la materia">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="correo" value="{{correo}}" placeholder="digite el periodo">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-info btn-block" type="submit"><i class="fas fa-sign-in-alt"> Editar</i> </button>
-                        </div>
-                    </form>
-         </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-      </div>
-    </div>
-      </td>
-    </tr>
-
-    <!-- Modal agregar-->
+     <!-- Modal agregar-->
 <div class="modal fade" id="agregar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -114,14 +90,35 @@
                             <label for=""></label>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="nombre" id="" placeholder="digite el nombre">
+                            <input class="form-control" type="text" name="nombres" id="" placeholder="digite el nombre completo">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="edad" id="" placeholder="digite la edad">
+                            <input class="form-control" type="text" name="apellidos" id="" placeholder="digite los apellidos">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="n_telefono" id="" placeholder="digite el numero de telefono">
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="text" name="correo" id="" placeholder="digite el correo">
                         </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="direccion" id="" placeholder="digite la direccion">
+                        </div>
+                        <select name="id_ciudad">
+                              {{#each ciudades}}
+                              <option value="{{id_ciudad}}">{{ciudad}}</option>
+                              {{/each}}
+                        </select><br>
+                        <select name="id_barrio">
+                              {{#each barrio}}
+                              <option value="{{id_barrio}}">{{barrio}}</option>
+                              {{/each}}
+                        </select><br>
+                        <select name="id_rol">
+                              {{#each roles}}
+                              <option value="{{id_rol}}">{{rol}}</option>
+                              {{/each}}
+                        </select><br>
                         <div class="form-group">
                             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"> Agregar</i> </button>
                         </div>
@@ -135,7 +132,61 @@
   </div>
 </div>
 
+<!-- Modal modificar-->
+        <div class="modal fade" id="modificar{{id_usuario}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+          <div class="modal-content">
+           <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modificar usuario: {{nombre}} {{apellidos}}</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+         <div class="modal-body">
+          <form action="/usuarios/editar/{{id_usuario}}" method="POST">
+                        <div class="form-group">
+                            <label for=""></label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="nombres" value="{{nombres}}" placeholder="digite el nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="apellidos" value="{{apellidos}}" placeholder="digite los apellidos">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="n_telefono" value="{{n_telefono}}" placeholder="digite el numero de telefono">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="correo" value="{{correo}}" placeholder="digite el correo">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="direccion" value="{{direccion}}" placeholder="digite la direccion de domicilio">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="id_ciudad" value="{{id_ciudad}}" placeholder="digite el valor de la ciudad">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="id_barrio" value="{{id_barrio}}" placeholder="digite el valor del barrio">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="roles_id_rol" value="{{roles_id_rol}}" placeholder="digite el valor del rol del usuario">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-info btn-block" type="submit"><i class="fas fa-sign-in-alt"> Editar</i> </button>
+                        </div>
+                    </form>
+         </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+      </div>
+    </div>
+      </td>
+    </tr>
+
+   
+
     {{/each}}
+
   </tbody>
 </table>
 
