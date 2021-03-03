@@ -47,6 +47,7 @@ app.use('/servicios',require('./routes/servicios'));
 app.use('/categorias',require('./routes/categorias'));
 app.use('/productos',require('./routes/productos'));
 app.use('/pedidos',require('./routes/pedidos'));
+app.use('/facturas',require('./routes/facturas'));
 
 // public - navegador puede acceder
 app.use(express.static(path.join(__dirname,'public')));
