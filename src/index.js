@@ -39,7 +39,7 @@ app.use(require('./routes'));
 app.use(require('./routes/authentication'));
 app.use('/usuarios',require('./routes/usuarios'));
 app.use('/diezmos',require('./routes/diezmos'));
-app.use('/barrios',require('./routes/barrios'));
+app.use('/barrios',require('./routes/barrios'));+
 app.use('/ciudades',require('./routes/ciudades'));
 app.use('/roles',require('./routes/roles'));
 app.use('/marcas',require('./routes/marcas'));
