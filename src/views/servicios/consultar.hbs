@@ -1,141 +1,163 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
-  </head>
-  <body>
-    <h1>servicios</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">servicios</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Acciones</th>
-      <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#agregar">
-        agregar
-      </button>
-    </tr>
-  </thead>
-  <tbody>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+  <h1>servicios</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">servicios</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Acciones</th>
+        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#agregar">
+          agregar
+        </button>
+      </tr>
+    </thead>
+    <tbody>
       {{#each servicios}}
-    <tr>
-      <th scope="row">{{id_servicio}}</th>
-      <td>{{servicio}}</td>
-      <td>{{precio}}</td>
-      <td>
-        <!-- Button eliminar -->
-        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#eliminar{{id_servicio}}">
-         Eliminar
-        </button>
-         <!-- Button modificar -->
-        <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#modificar{{id_servicio}}">
-         Modificar
-        </button>
+      <tr>
+        <th scope="row">{{id_servicio}}</th>
+        <td>{{servicio}}</td>
+        <td>{{precio}}</td>
+        <td>
+          <!-- Button eliminar -->
+          <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+            data-target="#eliminar{{id_servicio}}">
+            Eliminar
+          </button>
+          <!-- Button modificar -->
+          <button type="button" class="btn btn-info btn-block" data-toggle="modal"
+            data-target="#modificar{{id_servicio}}">
+            Modificar
+          </button>
 
-<!-- Modal eliminar-->
-<div class="modal fade" id="eliminar{{id_servicio}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro de eliminar este servicio {{servicio}}? </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <a href="delete/{{id_servicio}}" class="btn btn-danger btn-block" class="fas fa-sign-in-alt">Eliminar</a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-      </div>
-    </div>
-  </div>
-</div>        
-
-<!-- Modal modificar-->
-        <div class="modal fade" id="modificar{{id_servicio}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modificar servicio: {{nombre}}</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+          <!-- Modal eliminar-->
+          <div class="modal fade" id="eliminar{{id_servicio}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro de eliminar este servicio {{servicio}}?
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <a href="delete/{{id_servicio}}" class="btn btn-danger btn-block"
+                    class="fas fa-sign-in-alt">Eliminar</a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+                </div>
+              </div>
+            </div>
           </div>
-         <div class="modal-body">
-          <form action="/servicios/editar/{{id_servicio}}" method="POST">
-                        <div class="form-group">
-                            <label for=""></label>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="servicio" value="{{servicio}}" placeholder="digite el nombre del servicio">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="precio" value="{{precio}}" placeholder="digite el precio">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-info btn-block" type="submit"><i class="fas fa-sign-in-alt"> Editar</i> </button>
-                        </div>
-                    </form>
-         </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-      </div>
-    </div>
-      </td>
-    </tr>
 
-    <!-- Modal agregar-->
-<div class="modal fade" id="agregar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Agregar ususario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="/servicios/agregar" method="POST">
-                        <div class="form-group">
-                            <label for=""></label>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="servicio" id="" placeholder="digite el nombre del servicio">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="precio" id="" placeholder="digite el precio">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"> Agregar</i> </button>
-                        </div>
-                    </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
+          <!-- Modal modificar-->
+          <div class="modal fade" id="modificar{{id_servicio}}" data-backdrop="static" tabindex="-1" role="dialog"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Modificar servicio: {{nombre}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="/servicios/editar/{{id_servicio}}" method="POST">
+                    <div class="form-group">
+                      <label for=""></label>
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="servicio" value="{{servicio}}"
+                        placeholder="digite el nombre del servicio">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="precio" value="{{precio}}"
+                        placeholder="digite el precio">
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-info btn-block" type="submit"><i class="fas fa-sign-in-alt"> Editar</i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+                </div>
+              </div>
+        </td>
+      </tr>
 
-    {{/each}}
-  </tbody>
-</table>
+      <!-- Modal agregar-->
+      <div class="modal fade" id="agregar" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Agregar ususario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/servicios/agregar" method="POST">
+                <div class="form-group">
+                  <label for=""></label>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="servicio" id=""
+                    placeholder="digite el nombre del servicio">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name="precio" id="" placeholder="digite el precio">
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"> Agregar</i>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{/each}}
+    </tbody>
+  </table>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
